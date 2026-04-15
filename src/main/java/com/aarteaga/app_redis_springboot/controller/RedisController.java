@@ -25,4 +25,9 @@ public class RedisController {
     public Mono<String> getValue(@PathVariable String key) {
         return valueOps.get(key);
     }
+
+    @PostMapping("/user")
+    public Mono<Boolean> saveUser(@RequestBody User user) {
+        return valueOps.set("user:" + user.getId(), String.valueOf(user));
+    }
 }
